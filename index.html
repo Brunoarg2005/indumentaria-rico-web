@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Jimena Rico, costurera en Mar del Plata. Vestidos, ropa a medida, fundas de sillones, cortinas y más.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Rico Indumentaria</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: taller de costura — una cinta métrica recorre la página y separa cada sección; galería en columnas tipo tablero de muestras */
+:root{
+  --bg:#F5F3F6;        /* tela de algodón, levemente lila */
+  --paper:#FFFFFF;
+  --ink:#24213A;       /* hilo índigo */
+  --muted:#6B6680;
+  --line:#DCD7E3;
+  --accent:#C2366B;    /* alfiler fucsia */
+  --tape:#F2C94C;      /* cinta métrica */
+  --tape-ink:#3A2F0B;
+  --display:"Gloock", Georgia, "Times New Roman", serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17151F;--paper:#211E2C;--ink:#ECE8F4;--muted:#A9A3BC;--line:#36314A;--accent:#F06A9A;--tape:#E2B93B;--tape-ink:#2A2208;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17151F;--paper:#211E2C;--ink:#ECE8F4;--muted:#A9A3BC;--line:#36314A;--accent:#F06A9A;--tape:#E2B93B;--tape-ink:#2A2208;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.08}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+
+/* Nav */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{font-family:var(--display);font-size:1.35rem;text-decoration:none}
+.brand span{color:var(--accent)}
+nav.links{display:flex;gap:18px;flex-wrap:wrap;font-size:.92rem}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover,nav.links a:focus-visible{color:var(--ink)}
+
+/* Hero */
+.hero{padding-block:56px 40px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,6.4vw,4.9rem);margin-block:14px 20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{font-size:1.12rem;color:var(--muted);max-width:34em}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:600;text-decoration:none;font-size:.98rem;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.collage{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,1fr);aspect-ratio:1/1.05;max-width:100%;gap:10px}
+.collage img{width:100%;height:100%;object-fit:cover;border-radius:4px;display:block}
+.collage .a{grid-column:1/4;grid-row:1/5}
+.collage .b{grid-column:4/7;grid-row:1/4}
+.collage .c{grid-column:4/7;grid-row:4/7}
+.collage .d{grid-column:1/4;grid-row:5/7}
+.pin{position:relative}
+.pin::after{content:"";position:absolute;top:-6px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 1px 2px rgba(0,0,0,.3);transform:translateX(-50%)}
+
+/* Cinta métrica */
+.tape{height:34px;background:var(--tape);color:var(--tape-ink);overflow:hidden;position:relative;
+  background-image:
+    repeating-linear-gradient(90deg,var(--tape-ink) 0 1px,transparent 1px 10px),
+    repeating-linear-gradient(90deg,var(--tape-ink) 0 1.5px,transparent 1.5px 50px),
+    repeating-linear-gradient(90deg,var(--tape-ink) 0 2px,transparent 2px 100px);
+  background-size:100% 7px,100% 13px,100% 20px;background-repeat:no-repeat;background-position:0 0,0 0,0 0}
+.tape .nums{position:absolute;inset:auto 0 3px 0;display:flex;font-family:var(--mono);font-size:10px;white-space:nowrap}
+.tape .nums span{width:100px;flex:none;padding-left:4px}
+
+/* Secciones */
+section{padding-block:64px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:32px}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.1rem);margin-top:8px}
+.sec-head p{color:var(--muted);max-width:36em}
+
+/* Servicios */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--paper);padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;text-align:left;border:0;font:inherit;color:inherit;cursor:pointer}
+.svc:hover h3,.svc:focus-visible h3{color:var(--accent)}
+.svc:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.svc h3{font-size:1.4rem}
+.svc p{color:var(--muted);font-size:.95rem}
+.svc .count{font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:auto}
+
+/* Galería */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{font:inherit;font-size:.92rem;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.chip small{font-family:var(--mono);opacity:.7;margin-left:4px}
+.grid{columns:4 240px;column-gap:14px}
+.item{break-inside:avoid;margin:0 0 14px;background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:block;width:100%;padding:0;cursor:zoom-in;font:inherit;color:inherit;text-align:left}
+.item img{display:block;width:100%;height:auto;transition:transform .4s ease}
+.item:hover img{transform:scale(1.03)}
+.item:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.item figcaption{padding:10px 12px 12px;font-size:.88rem;color:var(--muted);display:flex;justify-content:space-between;gap:10px}
+.item figcaption b{color:var(--ink);font-weight:500}
+.item .tag{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);white-space:nowrap}
+
+/* Proceso */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:s}
+.step{border-top:2px solid var(--ink);padding-top:14px}
+.step .n{font-family:var(--mono);font-size:.8rem;color:var(--accent)}
+.step h3{font-size:1.45rem;margin-block:6px 8px}
+.step p{color:var(--muted);font-size:.95rem}
+
+/* Contacto */
+.contact{background:var(--ink);color:var(--bg)}
+.contact .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.contact h2{font-size:clamp(2rem,4.6vw,3.3rem)}
+.contact p{opacity:.8;margin-top:14px;max-width:32em}
+.contact .card{border:1px solid color-mix(in srgb,var(--bg) 25%,transparent);border-radius:8px;padding:24px;display:grid;gap:14px}
+.contact dt{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;opacity:.65}
+.contact dd{margin:2px 0 0;font-size:1.05rem}
+.contact .btn{border-color:var(--bg);color:var(--ink);background:var(--bg);justify-self:start}
+footer{padding-block:24px;font-size:.85rem;color:var(--muted)}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(15,12,22,.92);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb figure{margin:0;max-width:min(1000px,100%);max-height:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+.lb img{max-height:80vh;max-width:100%;width:auto;border-radius:4px}
+.lb figcaption{color:#EDEAF3;font-size:.95rem;text-align:center}
+.lb button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;width:46px;height:46px;border-radius:50%;font-size:1.4rem;cursor:pointer}
+.lb button:focus-visible{outline:3px solid #F06A9A}
+.lb .close{top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px))}
+.lb .prev{left:max(12px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb .next{right:max(12px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+
+@media (max-width:860px){
+  .hero .wrap,.contact .wrap{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  nav.links{display:none}
+}
+@media (max-width:480px){.steps{grid-template-columns:1fr}.grid{columns:2 140px;column-gap:10px}.item figcaption .tag{display:none}}
+@media (prefers-reduced-motion:reduce){.item img{transition:none}.item:hover img{transform:none}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Rico <span>Indumentaria</span></a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#como">Cómo trabajo</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Costura a medida · Mar del Plata</p>
+        <h1>Ropa y textiles para tu casa, <em>hechos a tu medida.</em></h1>
+        <p class="lead">Soy Jimena Rico, costurera. Confecciono vestidos de fiesta, blusas, camisas y abrigos, vestuario para danza y actos escolares, y todo lo textil del hogar: fundas de sillones, cortinas, almohadones y más. Cada encargo se corta según tus medidas y la tela que elijas.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#trabajos">Ver trabajos</a>
+          <a class="btn" href="#contacto">Pedir un presupuesto</a>
+        </div>
+      </div>
+      <div class="collage" aria-hidden="true">
+        <img class="a" src="img/fiesta-07.jpg" alt="">
+        <img class="b" src="img/hogar-04.jpg" alt="">
+        <img class="c" src="img/infantil-08.jpg" alt="">
+        <img class="d" src="img/hogar-13.jpg" alt="">
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"><div class="nums" id="tapeNums"></div></div>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Servicios</p>
+          <h2>Qué puedo hacer por vos</h2>
+        </div>
+        <p>Tocá una categoría para ver los trabajos de ese tipo.</p>
+      </div>
+      <div class="services" id="services"></div>
+    </div>
+  </section>
+
+  <section id="trabajos" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Trabajos realizados</p>
+          <h2>Del taller a tu placard</h2>
+        </div>
+        <p>Una selección de encargos reales. Tocá una foto para verla en grande.</p>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrar trabajos"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"><div class="nums" id="tapeNums2"></div></div>
+
+  <section id="como">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Cómo trabajo</p>
+          <h2>De la idea a la prenda terminada</h2>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">01</span><h3>Consulta</h3><p>Me contás qué necesitás. Podés mandar una foto de referencia o de la prenda o el mueble que querés renovar.</p></div>
+        <div class="step"><span class="n">02</span><h3>Medidas y tela</h3><p>Tomo las medidas, te asesoro sobre la tela más adecuada y te paso el presupuesto.</p></div>
+        <div class="step"><span class="n">03</span><h3>Prueba</h3><p>En prendas a medida hacemos una prueba para ajustar largo, talle y detalles antes de terminar.</p></div>
+        <div class="step"><span class="n">04</span><h3>Entrega</h3><p>Terminaciones prolijas y la prenda lista para usar, o la funda lista para colocar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow" style="color:var(--tape)">Encargos y presupuestos</p>
+        <h2>¿Tenés algo en mente?</h2>
+        <p>Escribime por Facebook con una foto o una idea de lo que buscás, y te respondo con el presupuesto y los tiempos de entrega.</p>
+      </div>
+      <dl class="card">
+        <div><dt>Costurera</dt><dd>Jimena Rico</dd></div>
+        <div><dt>Ubicación</dt><dd>Mar del Plata, Buenos Aires</dd></div>
+        <div><dt>Facebook</dt><dd>facebook.com/brunojavier.pianezzi</dd></div>
+        <a class="btn" href="https://www.facebook.com/brunojavier.pianezzi" target="_blank" rel="noopener">Escribir por Facebook</a>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Rico Indumentaria · Costura a tu medida · Mar del Plata</div></footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="close" id="lbClose" aria-label="Cerrar">✕</button>
+  <button class="prev" id="lbPrev" aria-label="Foto anterior">‹</button>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <button class="next" id="lbNext" aria-label="Foto siguiente">›</button>
+</div>
+
+<script>
+const CATS = {
+  fiesta:   {name:"Vestidos y fiesta", desc:"Vestidos de noche, de egresada y para eventos, en satén, tul, lentejuelas o encaje."},
+  prendas:  {name:"Blusas, camisas y abrigos", desc:"Prendas de uso diario a medida: blusas, camisas, sacos, camperas y kimonos."},
+  hogar:    {name:"Hogar y deco", desc:"Fundas de sillones y esquineros, cortinas, almohadones, fundas de sillas y mantelería."},
+  infantil: {name:"Danza, chicos y disfraces", desc:"Vestuario para danza, folclore, murga, actos escolares y disfraces."},
+  arreglos: {name:"Uniformes y arreglos", desc:"Ambos, delantales, ropa reciclada y arreglos de prendas especiales."}
+};
+const P = [
+ ["fiesta-01","fiesta","Vestido de body con tachas y falda de tul"],
+ ["fiesta-02","fiesta","Vestido largo de satén azul petróleo"],
+ ["fiesta-03","fiesta","Vestido de baile azul y verde lentejuela"],
+ ["fiesta-04","fiesta","Vestido azul con volados"],
+ ["fiesta-05","fiesta","Vestido lila con corsé de encaje"],
+ ["fiesta-06","fiesta","Espalda con cordón cruzado tipo corsé"],
+ ["fiesta-07","fiesta","Vestido de satén champagne con cruce"],
+ ["fiesta-08","fiesta","Vestido de satén gris con lazo en la cintura"],
+ ["fiesta-09","fiesta","Vestido fucsia de breteles"],
+ ["fiesta-11","fiesta","Vestido turquesa con lazo"],
+ ["prendas-01","prendas","Campera de piel sintética"],
+ ["prendas-02","prendas","Saco verde agua"],
+ ["prendas-03","prendas","Saco liviano verde con botones"],
+ ["prendas-04","prendas","Blusa de encaje rosa"],
+ ["prendas-05","prendas","Camisa de encaje fucsia"],
+ ["prendas-06b","prendas","Vestido corto estampado"],
+ ["prendas-07","prendas","Blusa estampada con flores tropicales"],
+ ["prendas-08","prendas","Blusa floreada"],
+ ["prendas-09","prendas","Camisa blanca de lino"],
+ ["prendas-10","prendas","Camisa verde de lino"],
+ ["prendas-11","prendas","Campera inflable azul"],
+ ["prendas-12","prendas","Blusa con moño en la manga"],
+ ["prendas-13","prendas","Kimono floreado"],
+ ["prendas-14","prendas","Túnica blanca amplia"],
+ ["prendas-15","prendas","Blusa amarilla con volado"],
+ ["prendas-16","prendas","Blusa blanca bordada"],
+ ["hogar-01","hogar","Funda para sofá cama"],
+ ["hogar-02","hogar","Funda para esquinero gris azulado"],
+ ["hogar-03","hogar","Funda para esquinero, vista lateral"],
+ ["hogar-04","hogar","Funda gris para sillón de dos cuerpos"],
+ ["hogar-07","hogar","Funda blanca para esquinero grande"],
+ ["hogar-08","hogar","Tapizado de sillón bordó con almohadón"],
+ ["hogar-09","hogar","Fundas blancas para sillón"],
+ ["hogar-10","hogar","Almohadones para futón"],
+ ["hogar-11","hogar","Funda beige para sillón"],
+ ["hogar-12","hogar","Funda rayada para sillón y puf"],
+ ["hogar-13","hogar","Cortinas de voile y blackout azul"],
+ ["hogar-14","hogar","Cortinas dobles para living"],
+ ["hogar-15","hogar","Cortinas de voile blanco"],
+ ["hogar-16","hogar","Cortinas para dormitorio"],
+ ["hogar-17","hogar","Cortinas de voile a dos paños"],
+ ["hogar-18","hogar","Almohadones rayados"],
+ ["hogar-19","hogar","Fundas para sillas de comedor"],
+ ["hogar-20","hogar","Almohadones para sillas"],
+ ["hogar-21","hogar","Camino de mesa para evento"],
+ ["hogar-22","hogar","Funda para silla de comer de bebé"],
+ ["infantil-01","infantil","Uniformes de animadoras"],
+ ["infantil-02","infantil","Uniforme de animadora azul y blanco"],
+ ["infantil-03","infantil","Malla de danza azul con volados"],
+ ["infantil-04","infantil","Mallas de danza con lentejuelas"],
+ ["infantil-05","infantil","Vestido infantil con corazón"],
+ ["infantil-06","infantil","Vestido de danza con moño"],
+ ["infantil-07","infantil","Vestido de danza a rayas"],
+ ["infantil-08","infantil","Pollera folclórica con volados de colores"],
+ ["infantil-09","infantil","Disfraz de colibrí"],
+ ["infantil-10","infantil","Traje de murga"],
+ ["infantil-11","infantil","Pollera de paisana celeste"],
+ ["infantil-12","infantil","Tutús de tul"],
+ ["infantil-13","infantil","Saco de banda de música"],
+ ["arreglos-01","arreglos","Ambos de trabajo"],
+ ["arreglos-02","arreglos","Ambo azul a medida"],
+ ["arreglos-03","arreglos","Chaqueta de ambo con bolsillos"],
+ ["arreglos-04","arreglos","Pollera de jean reciclado"],
+ ["arreglos-07","arreglos","Delantal de cocina"],
+ ["arreglos-08","arreglos","Pollera de lentejuelas"]
+];
+
+const grid=document.getElementById('grid'), filters=document.getElementById('filters'), services=document.getElementById('services');
+let current='todos', visible=[];
+
+function count(c){return P.filter(p=>p[1]===c).length}
+const covers={fiesta:"fiesta-02",prendas:"prendas-04",hogar:"hogar-13",infantil:"infantil-08",arreglos:"arreglos-02"};
+
+Object.entries(CATS).forEach(([k,c])=>{
+  const b=document.createElement('button');b.className='svc';b.type='button';
+  b.innerHTML=`<h3>${c.name}</h3><p>${c.desc}</p><span class="count">${count(k)} trabajos</span>`;
+  b.onclick=()=>{setFilter(k);document.getElementById('trabajos').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})};
+  services.appendChild(b);
+});
+
+function mkChip(k,label,n){const b=document.createElement('button');b.className='chip';b.type='button';b.id='chip-'+k;b.dataset.k=k;b.innerHTML=`${label}<small>${n}</small>`;b.onclick=()=>setFilter(k);filters.appendChild(b)}
+mkChip('todos','Todos',P.length);
+Object.entries(CATS).forEach(([k,c])=>mkChip(k,c.name,count(k)));
+
+function render(){
+  grid.innerHTML='';
+  visible=P.filter(p=>current==='todos'||p[1]===current);
+  visible.forEach((p,i)=>{
+    const f=document.createElement('button');f.className='item';f.type='button';
+    f.setAttribute('aria-label','Ver en grande: '+p[2]);
+    f.innerHTML=`<img src="img/${p[0]}.jpg" alt="${p[2]}" loading="lazy"><figcaption><b>${p[2]}</b><span class="tag">${CATS[p[1]].name.split(' ')[0]}</span></figcaption>`;
+    f.onclick=()=>openLb(i);
+    grid.appendChild(f);
+  });
+  [...filters.children].forEach(c=>c.setAttribute('aria-pressed',c.dataset.k===current));
+}
+function setFilter(k){current=k;try{localStorage.setItem('rico-filtro',k)}catch(e){}render()}
+try{const s=localStorage.getItem('rico-filtro');if(s&&(s==='todos'||CATS[s]))current=s}catch(e){}
+render();
+
+// Lightbox
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
+let idx=0,lastFocus=null;
+function show(){const p=visible[idx];lbImg.src=`img/${p[0]}.jpg`;lbImg.alt=p[2];lbCap.textContent=`${p[2]} · ${CATS[p[1]].name} (${idx+1}/${visible.length})`}
+function openLb(i){idx=i;lastFocus=document.activeElement;show();lb.hidden=false;document.getElementById('lbClose').focus()}
+function closeLb(){lb.hidden=true;lastFocus&&lastFocus.focus()}
+function step(d){idx=(idx+d+visible.length)%visible.length;show()}
+document.getElementById('lbClose').onclick=closeLb;
+document.getElementById('lbPrev').onclick=()=>step(-1);
+document.getElementById('lbNext').onclick=()=>step(1);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
+let tx=null;lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)step(dx<0?1:-1);tx=null});
+
+// Números de la cinta métrica
+['tapeNums','tapeNums2'].forEach(id=>{const el=document.getElementById(id);let h='';for(let i=0;i<40;i++)h+=`<span>${i*10||''}</span>`;el.innerHTML=h});
+</script>
+
+</body>
+</html>
